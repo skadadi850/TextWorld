@@ -165,16 +165,25 @@ public class Level {
             return next;
         }
 
+        protected void moveTowards (Level.Room r){
+
+        }
+
+        protected void moveAwayFrom (Level.Room r){
+
+        }
 
 
-//
-//        protected void moveTowards (Level.Room r){
-//
-//        }
-//
-//        protected boolean isRoomCloserTo (Player p, Level.Room creatureRoom){
-//            Level.Room playerRoom = p.currentRoom;
-//        }
+
+        protected boolean areNeighbors (Level.Room playerRoom){
+            ArrayList<Level.Room> playerNeighbors = getNeighbors();
+            for (Level.Room room : playerNeighbors){
+                if (room.equals(playerRoom)){
+                    return true;
+                }
+            }
+            return false;
+        }
 
 
 

@@ -7,6 +7,11 @@ public class Wumpus extends Creature{
     }
     @Override
     public void move() {
+        if (playerRoom.areNeighbors(currentRoom)){
+
+        }
+
+
         Level.Room next = currentRoom.getRandomRoom(currentRoom);
         moveToRoom (next);
     }
