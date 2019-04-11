@@ -1,4 +1,3 @@
-import javax.print.attribute.HashPrintJobAttributeSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -204,17 +203,22 @@ public class Level {
             return next;
         }
 
-        protected void moveTowards (Level.Room r){
-
+        public boolean contains (Player p){
+            Level.Room playerRoom = p.getCurrentRoom();
+            return this.equals(playerRoom);
         }
 
-        protected void moveAwayFrom (Level.Room r){
+        public String displayNeighbors(){
+            String output = "";
 
+            for (Room n : getNeighbors()){
+                output += n.getName() + " ";
+            }
+            return output;
         }
 
 
-
-        protected boolean areNeighbors (Level.Room playerRoom){
+        protected boolean neighborsCreatures (Level.Room playerRoom){
             ArrayList<Level.Room> playerNeighbors = getNeighbors();
             for (Level.Room room : playerNeighbors){
                 if (room.equals(playerRoom)){
