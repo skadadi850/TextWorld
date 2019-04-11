@@ -75,7 +75,7 @@ public class Main {
     private void initCommands(){
         commands.put("take",new TakeCommand(g));
         commands.put("look", new LookCommand(p));
-        commands.put("add-room", new AddRoomCommand(p));
+        commands.put("add-room", new AddRoomCommand(g));
         commands.put("drop",new DropCommand(g));
         commands.put("go", new GoCommand(g));
         commands.put("quit", new QuitCommand(g));

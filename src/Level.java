@@ -78,6 +78,12 @@ public class Level {
         return this.player;
     }
 
+    public boolean addRoom(String roomName) {
+        this.addRoom(roomName, "new room");
+        this.addUndirectedEdge(player.getCurrentRoom().getName(), roomName);
+        return (this.getRoom(roomName) != null);
+    }
+
 
     // beginning of sub class
 
