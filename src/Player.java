@@ -60,5 +60,9 @@ public class Player {
         }return false;
     }
 
-
+    public boolean takeItem(String itemName) {
+        Item i = this.currentRoom.removeItem(itemName);
+        this.addItem(i);
+        return (i.equals(null));
+    }
 }

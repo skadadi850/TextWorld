@@ -1,8 +1,12 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
+    HashMap<String, Command> commands;
+    private static Player p = new Player("Simran", "hs senior");
+    private static Level g = new Level(p);
     public static void main(String[] args) {
-        Level g = new Level();
+
         g.addRoom("hall", "long, narrow, endless, claustrophobic hallway");
         g.addRoom("closet" , "dark, dark closet");
         g.addRoom("dungeon" , "WARNING: dragon approaching");
@@ -15,9 +19,7 @@ public class Main {
         g.addDirectedEdge("hall", "dungeon");
         g.addUndirectedEdge("hall","closet");
 
-        Player p = new Player("Simran", "hs senior");
         p.setCurrentRoom(g.getRoom("hall"));
-
 
         String response = "";
         Scanner s = new Scanner(System.in);
@@ -31,11 +33,13 @@ public class Main {
 
         do {
 
+            initCommands();
+
             System.out.println("You are in the " + p.getCurrentRoom().getName());
             System.out.println("What do you want to do?");
             System.out.println(">");
             response = s.nextLine();
-            Command command = parseCommand(response);
+            Command command = lookUpCommand(response);
             command.execute();
 
             if (response.contains("go")){
@@ -66,6 +70,29 @@ public class Main {
         } while (!response.equals("quit"));
 
 
+    }
+
+    private void initCommands(){
+        commands.put("take",new TakeCommand(g));
+        commands.put("look", new LookCommand(p));
+        commands.put("add-room", new AddRoomCommand(p));
+        commands.put("drop",new DropCommand(g));
+        commands.put("go", new GoCommand(g));
+        commands.put("quit", new QuitCommand(g));
+    }
+
+    private Command lookUpCommand(String response){
+        String commandWord = getFirstWordIn(response);
+
+        Command c = commands.get(commandWord);
+        if (c==null)return new EmptyCommand();
+        c.init(response);
+
+        return c;
+    }
+
+    private String getFirstWordIn(String response) {
+        return response.substring(0,response.indexOf(" "));
     }
 
 

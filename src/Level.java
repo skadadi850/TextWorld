@@ -7,9 +7,11 @@ public class Level {
 
     private ArrayList<Creature> creatures = new ArrayList<>();
     private HashMap<String, Room> rooms;
+    Player player;
 
-    public Level (){
+    public Level(Player p){
         this.rooms = new HashMap<String,Room>();
+        this.player = p;
     }
 
     public void addRoom(String name, String description) {
@@ -72,6 +74,9 @@ public class Level {
         }
     }
 
+    public Player getPlayer() {
+        return this.player;
+    }
 
 
     // beginning of sub class
