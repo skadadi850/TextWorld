@@ -22,23 +22,28 @@ public class Main {
         String response = "";
         Scanner s = new Scanner(System.in);
 
-        Creature c = new Chicken(g.getRoom("hall"), "pizza");
-        Creature w = new Wumpus(g.getRoom("dungeon"),p, "wump");
-        Creature r = new PopStars(g.getRoom("closet"), p, "riri");
+        g.createRandomChickens(3);
+        g.createPopStar(1);
+        g.createWumpus(2);
+
+
 
 
         do {
 
             System.out.println("You are in the " + p.getCurrentRoom().getName());
             System.out.println("What do you want to do?");
+            System.out.println(">");
             response = s.nextLine();
+            Command command = parseCommand(response);
+            command.execute();
 
             if (response.contains("go")){
                 String roomName = response.substring(3);
                 p.setCurrentRoom( g.getRoom(roomName));
             } else if (response.equals("look")){
                 System.out.println("Items: " + p.getCurrentRoom().displayItems());
-                System.out.println(p.currentRoom.displayCreatures());
+                System.out.println(p.currentRoom.getCreatures().size());
             } else if (response.contains("add room")) {
                 String roomName = response.substring(9);
                 g.addRoom(roomName, "new room");
@@ -61,7 +66,8 @@ public class Main {
         } while (!response.equals("quit"));
 
 
-
     }
+
+
 }
 

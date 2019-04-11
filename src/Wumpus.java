@@ -26,7 +26,7 @@ public class Wumpus extends Creature{
     private Level.Room avoidPlayer() {
         Level.Room playerRoom = player.getCurrentRoom();
         Level.Room next = wumpusRoom.getRandomNeighbor();;
-        if (playerRoom.areNeighbors(wumpusRoom)) {
+        if (playerRoom.neighborsCreatures(wumpusRoom)) {
             if (next.equals(playerRoom)) {
                 wumpusRoom.neighbors.remove(playerRoom);
                 next = wumpusRoom.getRandomNeighbor();

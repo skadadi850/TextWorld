@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,6 @@ public class Level {
         Room n = new Room(name);
         n.setDescription(description);
         rooms.put(name, n);
-
-
     }
 
     public void addDirectedEdge(String name1, String name2) {
@@ -67,7 +66,11 @@ public class Level {
         return next;
     }
 
-
+    public void moveAllCreatures () {
+        for (Creature c : creatures){
+            c.act();
+        }
+    }
 
 
 
