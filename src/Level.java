@@ -41,6 +41,39 @@ public class Level {
         return rooms.get(name);
     }
 
+
+    public void createRandomChickens (int n){
+        for (int i = 0; i < n; i ++){
+            Creature c = new Chicken(getRoom("hall"),"Chicken ID: " + i);
+            getRoom("hall").addCreature(c);
+        }
+    }
+
+    public void createPopStar (int n){
+        for (int i = 0; i < n; i++){
+            Creature p = new PopStars(getRoom("dungeon"),"PopStar ID: " + i);
+            getRoom("dungeon").addCreature(p);
+        }
+    }
+
+    public void createWumpus(int n){
+        for (int i = 0; i < n; i++){
+            Creature p = new Wumpus(getRoom("closet"),"PopStar ID: " + i);
+            getRoom("closet").addCreature(p);
+        }
+    }
+
+    public Level.Room getRandomRoom(){
+        Level.Room next = rooms.get((int)(Math.random()*rooms.size()));
+        return next;
+    }
+
+
+
+
+
+    // beginning of sub class
+
     public class Room{
         public String name;
         public HashMap<String, Room> neighbors;

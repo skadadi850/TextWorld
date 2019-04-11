@@ -1,12 +1,17 @@
 public class PopStars extends Creature{
     private Player player;
-    private Level.Room wumpusRoom;
+    private Level.Room popStarRoom;
 
-    public PopStars (Level.Room wumpusRoom, Player p, String name){
-        super (wumpusRoom,name);
-        this.player = p;
-        this.wumpusRoom = wumpusRoom;
+    public PopStars (Level.Room popStarRoom, String name){
+        super (popStarRoom,name);
+        this.popStarRoom = popStarRoom;
     }
+
+    public void act (Player p){
+        this.player = p;
+        act();
+    }
+
     @Override
     public void act(){
         Level.Room next = lookForPlayer();
@@ -17,15 +22,15 @@ public class PopStars extends Creature{
     }
 
     private Level.Room lookForPlayer() {
-        Level.Room next = wumpusRoom;
+        Level.Room next = popStarRoom;
         if (player.currentRoom.areNeighbors(currentRoom)) {
             next = currentRoom;
         }
 
-        for (Level.Room wr : wumpusRoom.getNeighbors()){
+        for (Level.Room popr : popStarRoom.getNeighbors()){
             for (Level.Room pr : player.getCurrentRoom().getNeighbors()){
-                if (wr.equals(pr)){
-                    next = wr;
+                if (popr.equals(pr)){
+                    next = popr;
                 }
             }
         }
