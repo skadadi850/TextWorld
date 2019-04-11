@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Level {
 
-    ArrayList<Creature> creatures = new ArrayList<>();
+    private ArrayList<Creature> creatures = new ArrayList<>();
     private HashMap<String, Room> rooms;
 
     public Level (){
@@ -128,6 +128,12 @@ public class Level {
             return null;
         }
 
+        public void updateAllCreatures(){
+            for (Creature c : creatures){
+                c.act();
+            }
+        }
+
         public List<Creature> getCreatures(){
             return creatures;
         }
@@ -136,20 +142,20 @@ public class Level {
             String output = "";
 
             for (Creature i : creatures){
-                output += i.getNames() + " ";
+                output += i.getName() + " ";
             }
             return output;
         }
 
         public void addCreature (Creature c){
             if (c == (null)){
-                System.out.println("You cannot pick up that item");
+                System.out.println("You cannot add that creature");
             }
             creatures.add(c);
         }
 
-        public void removeCreature (Creature name){
-            creatures.remove(name);
+        public void removeCreature (Creature c){
+            creatures.remove(c);
         }
 
 
@@ -159,8 +165,8 @@ public class Level {
         }
 
 
-        public Room getRandomRoom(Room currentRoom) {
-            ArrayList<Level.Room> neighbors = currentRoom.getNeighbors();
+        public Room getRandomNeighbor () {
+            ArrayList<Level.Room> neighbors = this.getNeighbors();
             Level.Room next = neighbors.get((int)(Math.random()*neighbors.size()));
             return next;
         }
@@ -184,7 +190,6 @@ public class Level {
             }
             return false;
         }
-
 
 
     }

@@ -1,39 +1,41 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public abstract class Creature {
     protected Level.Room currentRoom;
-    String names;
+    String name;
 
-
-    public void setCurrentRoom(Level.Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
-
-    public Creature (Level.Room room){
+    public Creature (Level.Room room, String name){
         this.currentRoom = room;
+        this.name = name;
+
+    }
+    public void setCurrentRoom(Level.Room newRoom) {
+        this.currentRoom = newRoom;
     }
 
-    public String getNames() {
-        return names;
+    public void moveRandom(){
+        Level.Room next = currentRoom.getRandomNeighbor();
+        moveToNextRoom(next);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setNames(String names) {
-        this.names = names;
+        this.name = names;
     }
 
-    public abstract void move();
+//    public abstract void move();
 
     protected Level.Room getCurrentRoom (){
         return currentRoom;
     }
 
-    protected boolean moveToRoom(Level.Room r){
-        currentRoom = r;
+    protected boolean moveToNextRoom(Level.Room r){
+        setCurrentRoom(r);
         currentRoom.removeCreature(this);
         currentRoom.addCreature(this);
         return(currentRoom != null);
     }
 
+    public abstract void act();
 }

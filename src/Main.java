@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +22,13 @@ public class Main {
         String response = "";
         Scanner s = new Scanner(System.in);
 
+        Creature c = new Chicken(g.getRoom("hall"), "pizza");
+        Creature w = new Wumpus(g.getRoom("dungeon"),p, "wump");
+        Creature r = new PopStars(g.getRoom("closet"), p, "riri");
+
+
         do {
+
             System.out.println("You are in the " + p.getCurrentRoom().getName());
             System.out.println("What do you want to do?");
             response = s.nextLine();
@@ -32,7 +37,8 @@ public class Main {
                 String roomName = response.substring(3);
                 p.setCurrentRoom( g.getRoom(roomName));
             } else if (response.equals("look")){
-                System.out.println("Items: " + p.getCurrentRoom().displayItems() + "Chicken count: " + p.getCurrentRoom().getCreatures().size());
+                System.out.println("Items: " + p.getCurrentRoom().displayItems());
+                System.out.println(p.currentRoom.displayCreatures());
             } else if (response.contains("add room")) {
                 String roomName = response.substring(9);
                 g.addRoom(roomName, "new room");
