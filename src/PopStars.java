@@ -1,10 +1,14 @@
+import javax.sound.midi.Soundbank;
+
 public class PopStars extends Creature{
     private Player player;
     private Level.Room popStarRoom;
 
-    public PopStars (Level.Room popStarRoom, String name){
+
+    public PopStars (Level.Room popStarRoom,Player p, String name){
         super (popStarRoom,name);
         this.popStarRoom = popStarRoom;
+        this.player = p;
     }
 
     public void act (Player p){
@@ -22,15 +26,16 @@ public class PopStars extends Creature{
     }
 
     private Level.Room lookForPlayer() {
-        Level.Room next = popStarRoom;
-        if (player.currentRoom.neighborsCreatures(currentRoom)) {
-            next = currentRoom;
+        Level.Room next = this.currentRoom;
+        if (this.currentRoom.neighborsCreatures(player.getCurrentRoom())) {
+            next = this.popStarRoom;
+            return next;
         }
 
-        for (Level.Room popr : popStarRoom.getNeighbors()){
+        for (Level.Room pop : popStarRoom.getNeighbors()){
             for (Level.Room pr : player.getCurrentRoom().getNeighbors()){
-                if (popr.equals(pr)){
-                    next = popr;
+                if (pop.equals(pr)){
+                    next = pop;
                 }
             }
         }

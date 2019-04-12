@@ -12,13 +12,14 @@ public class GoCommand implements Command {
     }
 
     private String getLastWordIn(String userString) {
-        return userString.substring(5);
+        return userString.substring(3);
     }
 
     @Override
     public boolean execute() {
         Player p = level.getPlayer();
         p.setCurrentRoom(level.getRoom(this.roomName));
+        level.updateAllCreatures();
         return true;
     }
 }

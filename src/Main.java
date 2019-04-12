@@ -1,8 +1,11 @@
+import com.sun.javafx.binding.Logging;
+
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    static HashMap<String, Command> commands;
+    static HashMap<String, Command> commands = new HashMap<>();
     private static Player p = new Player("Simran", "hs senior");
     private static Level g = new Level(p);
     public static void main(String[] args) {
@@ -28,12 +31,10 @@ public class Main {
         g.createPopStar(1);
         g.createWumpus(2);
 
-
+        initCommands();
 
 
         do {
-
-            initCommands();
 
             System.out.println("You are in the " + p.getCurrentRoom().getName());
             System.out.println("What do you want to do?");
@@ -42,31 +43,33 @@ public class Main {
             Command command = lookUpCommand(response);
             command.execute();
 
-            if (response.contains("go")){
-                String roomName = response.substring(3);
-                p.setCurrentRoom( g.getRoom(roomName));
-            } else if (response.equals("look")){
-                System.out.println("Items: " + p.getCurrentRoom().displayItems());
-                System.out.println(p.currentRoom.getCreatures().size());
-            } else if (response.contains("add room")) {
-                String roomName = response.substring(9);
-                g.addRoom(roomName, "new room");
-                g.addUndirectedEdge(p.getCurrentRoom().getName(), roomName);
-            } else if (response.contains("take")){
-                String object = response.substring(5);
-                Item i = p.currentRoom.removeItem(object);
-                p.addItem(i);
-            } else if (response.contains("drop")){
-                String object = response.substring(5);
-                Item i = p.removeItem(object);
-                p.currentRoom.addItem(i);
-                System.out.println("You have dropped a " + i.getName());
+//            if (response.contains("go")){
+//                String roomName = response.substring(3);
+//                p.setCurrentRoom( g.getRoom(roomName));
+//            } else if (response.equals("look")){
+//                System.out.println("Items: " + p.getCurrentRoom().displayItems());
+//                System.out.println(p.currentRoom.getCreatures().size());
+//            } else if (response.contains("add room")) {
+//                String roomName = response.substring(9);
+//                g.addRoom(roomName, "new room");
+//                g.addUndirectedEdge(p.getCurrentRoom().getName(), roomName);
+//            } else if (response.contains("take")){
+//                String object = response.substring(5);
+//                Item i = p.currentRoom.removeItem(object);
+//                p.addItem(i);
+//            } else if (response.contains("drop")){
+//                String object = response.substring(5);
+//                Item i = p.removeItem(object);
+//                p.currentRoom.addItem(i);
+//                System.out.println("You have dropped a " + i.getName());
+//
+//            } else if (response.equals("quit")){
+//                response = "quit";
+//            } else {
+//                System.out.println("Try Again! Type go <room>, look, add room <room>, or quit");
+//            }
 
-            } else if (response.equals("quit")){
-                response = "quit";
-            } else {
-                System.out.println("Try Again! Type go <room>, look, add room <room>, or quit");
-            }
+
         } while (!response.equals("quit"));
 
 
@@ -92,6 +95,10 @@ public class Main {
     }
 
     private static String getFirstWordIn(String response) {
+        int spaceValue = response.indexOf(" ");
+        if (spaceValue == -1){
+            return response;
+        }
         return response.substring(0,response.indexOf(" "));
     }
 

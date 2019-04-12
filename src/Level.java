@@ -51,14 +51,14 @@ public class Level {
 
     public void createPopStar (int n){
         for (int i = 0; i < n; i++){
-            Creature p = new PopStars(getRoom("dungeon"),"PopStar ID: " + i);
+            Creature p = new PopStars(getRoom("dungeon"),player, "PopStar ID: " + i);
             getRoom("dungeon").addCreature(p);
         }
     }
 
     public void createWumpus(int n){
         for (int i = 0; i < n; i++){
-            Creature p = new Wumpus(getRoom("closet"),"PopStar ID: " + i);
+            Creature p = new Wumpus(getRoom("closet"),player,"Wumpus ID: " + i);
             getRoom("closet").addCreature(p);
         }
     }
@@ -68,7 +68,7 @@ public class Level {
         return next;
     }
 
-    public void moveAllCreatures () {
+    public void updateAllCreatures () {
         for (Creature c : creatures){
             c.act();
         }
@@ -92,7 +92,7 @@ public class Level {
         public HashMap<String, Room> neighbors;
         private String description;
         public List <Item> items = new ArrayList <>();
-        //public List <Creature> creatures = new ArrayList<>();
+        public List <Creature> creatures = new ArrayList<>();
 
 
         public Room (String name){
@@ -172,12 +172,6 @@ public class Level {
                 }
             }
             return null;
-        }
-
-        public void updateAllCreatures(){
-            for (Creature c : creatures){
-                c.act();
-            }
         }
 
         public List<Creature> getCreatures(){

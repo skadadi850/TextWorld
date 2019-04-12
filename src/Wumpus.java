@@ -2,9 +2,10 @@ public class Wumpus extends Creature{
     private Player player;
     private Level.Room wumpusRoom;
 
-    public Wumpus(Level.Room wumpusRoom, String name){
+    public Wumpus(Level.Room wumpusRoom,Player p, String name){
         super (wumpusRoom, name);
         this.wumpusRoom = wumpusRoom;
+        this.player = p;
     }
 
     public void act (Player p){
@@ -25,7 +26,7 @@ public class Wumpus extends Creature{
 
     private Level.Room avoidPlayer() {
         Level.Room playerRoom = player.getCurrentRoom();
-        Level.Room next = wumpusRoom.getRandomNeighbor();;
+        Level.Room next = wumpusRoom.getRandomNeighbor();
         if (playerRoom.neighborsCreatures(wumpusRoom)) {
             if (next.equals(playerRoom)) {
                 wumpusRoom.neighbors.remove(playerRoom);

@@ -31,9 +31,11 @@ public abstract class Creature {
     }
 
     protected boolean moveToNextRoom(Level.Room r){
+//        System.out.println("error");
+//        currentRoom.removeCreature(this);
+//        System.out.println("error");
         setCurrentRoom(r);
-        currentRoom.removeCreature(this);
-        currentRoom.addCreature(this);
+//        currentRoom.addCreature(this);
         return(currentRoom != null);
     }
 

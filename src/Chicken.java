@@ -15,8 +15,9 @@ public class Chicken extends Creature{
         Level.Room next = getCurrentRoom().getRandomNeighbor();
 
         if (next != null){
-            this.moveToNextRoom(next);
+            this.move();
         }
+
     }
     public void move() {
         Level.Room next = currentRoom.getRandomNeighbor();

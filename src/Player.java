@@ -50,7 +50,7 @@ public class Player {
     }
 
     public void setCurrentRoom (Level.Room newRoom){
-        currentRoom = newRoom;
+        this.currentRoom = newRoom;
     }
 
     public boolean moveToRoom (String name){
