@@ -51,15 +51,15 @@ public class Level {
 
     public void createPopStar (int n){
         for (int i = 0; i < n; i++){
-            Creature p = new PopStars(getRoom("dungeon"),player, "PopStar ID: " + i);
-            getRoom("dungeon").addCreature(p);
+            Creature p = new PopStars(getRoom("closet"),player, "PopStar ID: " + i);
+            getRoom("closet").addCreature(p);
         }
     }
 
     public void createWumpus(int n){
         for (int i = 0; i < n; i++){
-            Creature p = new Wumpus(getRoom("closet"),player,"Wumpus ID: " + i);
-            getRoom("closet").addCreature(p);
+            Creature p = new Wumpus(getRoom("hall"),player,"Wumpus ID: " + i);
+            getRoom("hall").addCreature(p);
         }
     }
 

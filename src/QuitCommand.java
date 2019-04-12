@@ -5,7 +5,7 @@ public class QuitCommand implements Command {
 
     @Override
     public void init(String userString) {
-        System.out.println(userString);
+        System.out.println("Thanks for playing!");
     }
 
     @Override
