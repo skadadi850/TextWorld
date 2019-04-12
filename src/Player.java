@@ -65,4 +65,10 @@ public class Player {
         this.addItem(i);
         return (i.equals(null));
     }
+
+    public boolean dropItem(String itemName, Player p) {
+        p.removeItem(itemName);
+        this.currentRoom.addItem(itemName);
+        return true;
+    }
 }

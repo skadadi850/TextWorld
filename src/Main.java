@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    HashMap<String, Command> commands;
+    static HashMap<String, Command> commands;
     private static Player p = new Player("Simran", "hs senior");
     private static Level g = new Level(p);
     public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class Main {
 
     }
 
-    private void initCommands(){
+    private static void initCommands(){
         commands.put("take",new TakeCommand(g));
         commands.put("look", new LookCommand(p));
         commands.put("add-room", new AddRoomCommand(g));
@@ -81,7 +81,7 @@ public class Main {
         commands.put("quit", new QuitCommand(g));
     }
 
-    private Command lookUpCommand(String response){
+    private static Command lookUpCommand(String response){
         String commandWord = getFirstWordIn(response);
 
         Command c = commands.get(commandWord);
@@ -91,7 +91,7 @@ public class Main {
         return c;
     }
 
-    private String getFirstWordIn(String response) {
+    private static String getFirstWordIn(String response) {
         return response.substring(0,response.indexOf(" "));
     }
 
