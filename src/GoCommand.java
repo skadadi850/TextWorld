@@ -18,7 +18,12 @@ public class GoCommand implements Command {
     @Override
     public boolean execute() {
         Player p = level.getPlayer();
-        p.setCurrentRoom(level.getRoom(this.roomName));
-        return true;
+        Level.Room nextRoom = level.getRoom(this.roomName);
+        if (nextRoom!= null){
+            p.setCurrentRoom(nextRoom);
+            return true;
+        }
+        System.out.println("You cannot go to that room.");
+        return false;
     }
 }
