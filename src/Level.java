@@ -72,7 +72,6 @@ public class Level {
 
     public void updateAllCreatures () {
         this.creatures = countAllCreatures();
-        System.out.println(creatures.size());
         for (Creature c : creatures){
             c.act();
         }
@@ -241,7 +240,7 @@ public class Level {
 
 
         protected boolean neighborsCreatures (Level.Room playerRoom){
-            ArrayList<Level.Room> playerNeighbors = getNeighbors();
+            ArrayList<Level.Room> playerNeighbors = playerRoom.getNeighbors();
             for (Level.Room room : playerNeighbors){
                 if (room.equals(playerRoom)){
                     return true;

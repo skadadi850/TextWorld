@@ -27,8 +27,8 @@ public class PopStars extends Creature{
 
     private Level.Room lookForPlayer() {
         Level.Room next = this.currentRoom;
-        if (this.currentRoom.neighborsCreatures(player.getCurrentRoom())) {
-            next = this.popStarRoom;
+        if (next.neighborsCreatures(player.getCurrentRoom())) {
+            next = player.getCurrentRoom();
             return next;
         }
 

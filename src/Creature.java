@@ -34,8 +34,6 @@ public abstract class Creature {
         currentRoom.removeCreature(this);
         this.setCurrentRoom(r);
         r.addCreature(this);
-        System.out.println("Display creatures");
-        r.displayCreatures();
         return(currentRoom != null);
     }
 

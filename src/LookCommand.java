@@ -16,8 +16,6 @@ public class LookCommand implements Command {
         Level.Room playerRoom = player.getCurrentRoom();
         System.out.println("Items: " + playerRoom.displayItems());
         System.out.println("Creature List: " + playerRoom.displayCreatures());
-        System.out.println("Your neighbors are " + playerRoom.displayNeighbors());
-
 
         return (playerRoom != null);
     }
