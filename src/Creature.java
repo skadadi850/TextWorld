@@ -5,8 +5,8 @@ public abstract class Creature {
     public Creature (Level.Room room, String name){
         this.currentRoom = room;
         this.name = name;
-
     }
+
     public void setCurrentRoom(Level.Room newRoom) {
         this.currentRoom = newRoom;
     }
@@ -23,8 +23,6 @@ public abstract class Creature {
     public void setNames(String names) {
         this.name = names;
     }
-
-//    public abstract void move();
 
     protected Level.Room getCurrentRoom (){
         return currentRoom;

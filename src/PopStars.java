@@ -41,17 +41,4 @@ public class PopStars extends Creature{
         }
         return next;
     }
-
-//
-//    public void move() {
-//        if (player.currentRoom.areNeighbors(currentRoom)){
-//            Level.Room next = currentRoom;
-//
-//            if (next.equals(player.currentRoom)){
-//                currentRoom.neighbors.remove(next);
-//                next = currentRoom.getRandomNeighbor();
-//            }
-//            moveToRoom (next);
-//        }
-//    }
 }

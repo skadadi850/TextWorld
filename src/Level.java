@@ -211,12 +211,9 @@ public class Level {
             creatures.remove(c);
         }
 
-
-
         public boolean destroyCreature (String name){
             return creatures.remove(name);
         }
-
 
         public Room getRandomNeighbor () {
             ArrayList<Level.Room> neighbors = this.getNeighbors();
@@ -238,7 +235,6 @@ public class Level {
             return output;
         }
 
-
         protected boolean neighborsCreatures (Level.Room playerRoom){
             ArrayList<Level.Room> playerNeighbors = playerRoom.getNeighbors();
             for (Level.Room room : playerNeighbors){
@@ -253,4 +249,3 @@ public class Level {
     }
 }
 
-//

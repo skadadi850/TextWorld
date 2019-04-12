@@ -10,7 +10,6 @@ public class AddRoomCommand implements Command {
     @Override
     public void init(String userString) {
         this.roomName = userString.substring(9);
-
     }
 
     @Override

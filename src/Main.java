@@ -43,34 +43,6 @@ public class Main {
             Command command = lookUpCommand(response);
             command.execute();
             g.updateAllCreatures();
-
-//            if (response.contains("go")){
-//                String roomName = response.substring(3);
-//                p.setCurrentRoom( g.getRoom(roomName));
-//            } else if (response.equals("look")){
-//                System.out.println("Items: " + p.getCurrentRoom().displayItems());
-//                System.out.println(p.currentRoom.getCreatures().size());
-//            } else if (response.contains("add room")) {
-//                String roomName = response.substring(9);
-//                g.addRoom(roomName, "new room");
-//                g.addUndirectedEdge(p.getCurrentRoom().getName(), roomName);
-//            } else if (response.contains("take")){
-//                String object = response.substring(5);
-//                Item i = p.currentRoom.removeItem(object);
-//                p.addItem(i);
-//            } else if (response.contains("drop")){
-//                String object = response.substring(5);
-//                Item i = p.removeItem(object);
-//                p.currentRoom.addItem(i);
-//                System.out.println("You have dropped a " + i.getName());
-//
-//            } else if (response.equals("quit")){
-//                response = "quit";
-//            } else {
-//                System.out.println("Try Again! Type go <room>, look, add room <room>, or quit");
-//            }
-
-
         } while (!response.equals("quit"));
 
 
