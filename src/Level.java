@@ -68,10 +68,24 @@ public class Level {
         return next;
     }
 
+
+
     public void updateAllCreatures () {
+        this.creatures = countAllCreatures();
+        System.out.println(creatures.size());
         for (Creature c : creatures){
             c.act();
         }
+    }
+
+    private ArrayList<Creature> countAllCreatures() {
+        for (Room values : rooms.values()){
+            List<Creature> roomCreatureList = values.getCreatures();
+            for (Creature c: roomCreatureList){
+                this.creatures.add(c);
+            }
+        }
+        return this.creatures;
     }
 
     public Player getPlayer() {

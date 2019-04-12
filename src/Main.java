@@ -42,6 +42,7 @@ public class Main {
             response = s.nextLine();
             Command command = lookUpCommand(response);
             command.execute();
+            g.updateAllCreatures();
 
 //            if (response.contains("go")){
 //                String roomName = response.substring(3);

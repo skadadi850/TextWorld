@@ -20,7 +20,7 @@ public class Wumpus extends Creature{
         Level.Room next = avoidPlayer();
 
         if (next != null){
-            this.moveToNextRoom(next);
+            moveToNextRoom(next);
         }
     }
 

@@ -19,7 +19,6 @@ public class GoCommand implements Command {
     public boolean execute() {
         Player p = level.getPlayer();
         p.setCurrentRoom(level.getRoom(this.roomName));
-        level.updateAllCreatures();
         return true;
     }
 }
