@@ -38,7 +38,7 @@ public class Main {
 
             System.out.println("You are in the " + p.getCurrentRoom().getName());
             System.out.println("What do you want to do?");
-            System.out.println(">");
+            System.out.print(">");
             response = s.nextLine();
             Command command = lookUpCommand(response);
             command.execute();

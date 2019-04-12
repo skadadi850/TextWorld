@@ -1,11 +1,12 @@
 public class EmptyCommand implements Command {
     @Override
-    public void init(String userString) {
-        System.out.println(userString + " is not a valid response");
+    public void init(String userString){
     }
 
     @Override
     public boolean execute() {
-        return false;
+        System.out.println("Your response was invalid. Please enter look, move<room>, add-room<room>, drop<item>, " +
+                "take<item>, quit");
+        return true;
     }
 }
