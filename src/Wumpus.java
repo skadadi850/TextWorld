@@ -8,11 +8,6 @@ public class Wumpus extends Creature{
         this.player = p;
     }
 
-    public void act (Player p){
-        this.player = p;
-        act();
-    }
-
     @Override
 
     public void act(){
@@ -26,9 +21,13 @@ public class Wumpus extends Creature{
     private Level.Room avoidPlayer() {
         Level.Room playerRoom = player.getCurrentRoom();
         Level.Room next = wumpusRoom.getRandomNeighbor();
-        while (next.equals(playerRoom)) {
-            next = wumpusRoom.getRandomNeighbor();
+
+        for (Level.Room pr : player.getCurrentRoom().getNeighbors()) {
+            while (next.equals(playerRoom) || next.equals(pr)) {
+                next = wumpusRoom.getRandomNeighbor();
+            }
         }
+
         return next;
     }
 }

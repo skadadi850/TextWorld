@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Level {
 
-    private ArrayList<Creature> creatures = new ArrayList<>();
+    private ArrayList<Creature> masterCreatureList = new ArrayList<>();
     private HashMap<String, Room> rooms;
     Player player;
 
     public Level(Player p){
-        this.rooms = new HashMap<String,Room>();
+        this.rooms = new HashMap<>();
         this.player = p;
     }
 
@@ -44,21 +44,21 @@ public class Level {
 
     public void createRandomChickens (int n){
         for (int i = 0; i < n; i ++){
-            Creature c = new Chicken(getRoom("hall"),"Chicken ID: " + i);
+            Creature c = new Chicken(getRoom("hall"),"Chicken [ID: " + i +"]");
             getRoom("hall").addCreature(c);
         }
     }
 
     public void createPopStar (int n){
         for (int i = 0; i < n; i++){
-            Creature p = new PopStars(getRoom("closet"),player, "PopStar ID: " + i);
+            Creature p = new PopStars(getRoom("closet"),player, "PopStar [ID: " + i +"]");
             getRoom("closet").addCreature(p);
         }
     }
 
     public void createWumpus(int n){
         for (int i = 0; i < n; i++){
-            Creature p = new Wumpus(getRoom("hall"),player,"Wumpus ID: " + i);
+            Creature p = new Wumpus(getRoom("hall"),player,"Wumpus [ID: " + i +"]");
             getRoom("hall").addCreature(p);
         }
     }
@@ -71,8 +71,8 @@ public class Level {
 
 
     public void updateAllCreatures () {
-        this.creatures = countAllCreatures();
-        for (Creature c : creatures){
+        this.masterCreatureList = countAllCreatures();
+        for (Creature c : masterCreatureList){
             c.act();
         }
     }
@@ -81,10 +81,10 @@ public class Level {
         for (Room values : rooms.values()){
             List<Creature> roomCreatureList = values.getCreatures();
             for (Creature c: roomCreatureList){
-                this.creatures.add(c);
+                this.masterCreatureList.add(c);
             }
         }
-        return this.creatures;
+        return this.masterCreatureList;
     }
 
     public Player getPlayer() {

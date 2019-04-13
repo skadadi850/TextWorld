@@ -11,11 +11,6 @@ public abstract class Creature {
         this.currentRoom = newRoom;
     }
 
-    public void moveRandom(){
-        Level.Room next = currentRoom.getRandomNeighbor();
-        moveToNextRoom(next);
-    }
-
     public String getName() {
         return name;
     }

@@ -11,14 +11,13 @@ public class Chicken extends Creature{
 
     @Override
     public void act(){
-        Level.Room next = getCurrentRoom().getRandomNeighbor();
+        Level.Room next = currentRoom.getRandomNeighbor();
         if (next != null){
-            this.move();
+            this.move(next);
         }
 
     }
-    public void move() {
-        Level.Room next = currentRoom.getRandomNeighbor();
+    public void move(Level.Room next) {
         moveToNextRoom (next);
     }
 
